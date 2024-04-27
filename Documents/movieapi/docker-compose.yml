@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  movie_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - java-spring-network
+    volumes:
+      - ./:/app
+    ports:
+      - "8080:8080"
+  mongodb:
+    image: mongo
+    ports:
+      - "27017:27017"
+    networks:
+      - java-spring-network
+
+networks:
+  java-spring-network:
